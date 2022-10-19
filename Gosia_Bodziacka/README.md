@@ -1,1 +1,1 @@
- # Katalog Gosi
+ # Plik Gosi
