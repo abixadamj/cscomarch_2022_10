@@ -1,1 +1,3 @@
 # Paweł
+
+class LogEvents
