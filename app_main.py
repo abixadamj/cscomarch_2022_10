@@ -1,6 +1,8 @@
 # wczytujemy niezbędne elementy
 import PySimpleGUI as sg
 from functions.nbp import Nbp_table
+from functions.md_create import markdown_doc
+
 
 
 # definiujemy wygląd aplikacji
@@ -24,6 +26,8 @@ while True:
         nbp = Nbp_table(table, currency)
         nbp.get_table()
         nbp.show_currency()
+        # tu tworzymy Markdown
+        markdown_doc(f"output/{currency}", currency, nbp.kurs, nbp.nbp_table_no)
 
     # sprawdzamy wartości zwracane przez okno
     # sg.popup("Evnt is:", event, "Returned dict is:", values)
