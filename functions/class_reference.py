@@ -1,13 +1,50 @@
-# Adam
+class Nbp_table:
+    """
+    Klasa obsługująca API NBP - tabele Walut
+    """
+    def __init__(self, table: str, waluta: str):
+        self.table: str = table
+        self.waluta: str = waluta
+        self.kurs: float = 0
+        self.nbp_tablica: dict = None
+        self.nbp_table_no: str = ""
+        self.error_text: str = None
+        self.request_code: int = 0
 
-class Referencyjna:
-    def __init__(self, nowy_kolor: str):
-        self.nazwa = "Jakaś tam nazwa"
-        self.kolor = nowy_kolor
+    def get_table(self):
+        if self.nbp_tablica is not None:
+            self.error_text = "Jakaś tablica już tu jest..."
+            return False
 
-    def jaki_kolor(self):
-        print(f"Narzędzie ma kolor {self.kolor} i nazywa się {self.nazwa}")
+        import requests
+        table_api = f"http://api.nbp.pl/api/exchangerates/tables/{self.table}/"
+        try:
+            r_api = requests.get(table_api)
+        except ConnectionError:
+            self.error_text = "Chyba coś nie tak z siecią..."
+            return False
+        except Exception as e:
+            self.error_text = f"Inny błąd - {e}"
+            return False
 
-srb_czerw = Referencyjna("czerwony")
-print(srb_czerw.kolor)
-srb_czerw.jaki_kolor()
+        self.request_code = r_api.status_code
+        if self.request_code == 200:
+            self.nbp_tablica = r_api.json()[0]
+            self.nbp_table_no = self.nbp_tablica["no"]
+            self.nbp_tablica = self.nbp_tablica["rates"]
+            for rate in self.nbp_tablica:
+                if rate['code'] == self.waluta:
+                    self.kurs = rate['mid']
+                    return True
+
+    def show_currency(self):
+        if self.request_code != 200:
+            return False
+
+        print(f"Dla Waluty {self.waluta} w tablicy {self.nbp_table_no} kurs dzisiejszy wynosi {self.kurs}")
+
+
+if __name__ == "__main__":
+    test_nbp = Nbp_table("A", "CHF")
+    test_nbp.get_table()
+    test_nbp.show_currency()
