@@ -1,7 +1,11 @@
-def markdown_doc(filename: str, code: str, mid: float):
+def markdown_doc(filename: str, code: str, mid: float, table_no: str):
     import snakemd
     doc = snakemd.new_doc(filename)
     doc.add_header("Kurs Waluty z dnia.")
+    doc.add_horizontal_rule()
+    doc.add_paragraph(f"Tablica nr: {table_no}")
+    doc.add_horizontal_rule()
+    doc.add_code(f"Wartość kursu: {mid}")
     doc.add_horizontal_rule()
     doc.output_page()
 
@@ -28,4 +32,5 @@ class MarkdownDoc:
 
 if __name__ == "__main__":
     test_md = MarkdownDoc("pliczek", "CHF")
+    markdown_doc("pliczek", "CHF", 4.345, "AAAA/Aby")
 
