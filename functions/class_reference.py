@@ -2,6 +2,8 @@ class Nbp_table:
     """
     Klasa obsługująca API NBP - tabele Walut
     """
+    description = "To jest widoczne miedzy obiektami - pole klasy"
+
     def __init__(self, table: str, waluta: str):
         self.table: str = table
         self.waluta: str = waluta
@@ -45,6 +47,11 @@ class Nbp_table:
 
 
 if __name__ == "__main__":
-    test_nbp = Nbp_table("A", "CHF")
-    test_nbp.get_table()
-    test_nbp.show_currency()
+    test_chf = Nbp_table("A", "CHF")
+    test_usd = Nbp_table("A", "USD")
+    test_chf.get_table()
+    test_usd.show_currency()
+    test_chf.show_currency()
+    print(Nbp_table.description)
+    print(test_usd.description)
+    print(test_chf.description)
