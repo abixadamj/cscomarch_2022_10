@@ -1,0 +1,9 @@
+Tablica kursów walut z dnia 2022-10-20
+Tablica nr: 203/A/NBP/2022
+=========================================
+Currency         | Code | Mid 
+dolar amerykański             | USD| 4.8892
+euro                          | EUR| 4.7997
+frank szwajcarski             | CHF| 4.8899
+funt szterling                | GBP| 5.5061
+=========================================
