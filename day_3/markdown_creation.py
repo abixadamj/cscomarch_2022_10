@@ -1,9 +1,17 @@
-from functions.nbp import Nbp_table
-import snakemd
+def markdown_doc(filename: str, code: str, mid: float):
+    import snakemd
+    doc = snakemd.new_doc(filename)
+    doc.add_header("Kurs Waluty z dnia.")
+    doc.add_horizontal_rule()
+    doc.output_page()
+
+
 
 class MarkdownDoc:
 
     def __init__(self, filename: str, code: str, table: str = "A"):
+        from functions.nbp import Nbp_table
+        import snakemd
         self.file: str = filename
         self.code: str = code
         self.table: str = table
@@ -15,7 +23,6 @@ class MarkdownDoc:
             self.mid = self.nbp.kurs
             self.doc.add_header("Kurs Waluty z dnia.")
             self.doc.add_horizontal_rule()
-            # ...
             self.doc.output_page()
 
 

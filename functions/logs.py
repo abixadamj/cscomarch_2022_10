@@ -3,7 +3,11 @@
 import socket
 from datetime import datetime
 
-
+# to do
+import logging
+logging.basicConfig(filename='app.log', filemode='w', format='%(process)d-%(levelname)s-%(message)s')
+logging.warning('Admin logged out')
+# debug(), info(), warning(), error(), and critical()
 
 class LogEvents:
     """
