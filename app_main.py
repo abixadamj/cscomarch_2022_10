@@ -2,7 +2,7 @@
 import PySimpleGUI as sg
 from functions.nbp import Nbp_table
 from functions.md_create import markdown_doc
-
+from functions.doc_create import md_to_docx
 
 
 # definiujemy wygląd aplikacji
@@ -27,7 +27,9 @@ while True:
         nbp.get_table()
         nbp.show_currency()
         # tu tworzymy Markdown
-        markdown_doc(f"output/{currency}", currency, nbp.kurs, nbp.nbp_table_no)
+        output_file = f"output/{currency}"
+        markdown_doc(output_file, currency, nbp.kurs, nbp.nbp_table_no)
+        md_to_docx(output_file + ".md")
 
     # sprawdzamy wartości zwracane przez okno
     # sg.popup("Evnt is:", event, "Returned dict is:", values)
