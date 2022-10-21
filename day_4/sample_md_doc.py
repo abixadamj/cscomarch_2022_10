@@ -12,7 +12,7 @@ import pandas as pd
 df = pd.read_csv("dane_sprzedazowe.csv", sep=";")
 print(df)
 
-doc = snakemd.new_doc("simple_md_file")
+doc = snakemd.new_doc("../output/simple_md_file")
 
 doc.add_header("To będzie tytuł", 3)
 doc.add_paragraph("Dzisiaj tworzymy dokument w MD")
