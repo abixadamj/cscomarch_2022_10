@@ -73,6 +73,9 @@ class Nbp_table:
             for rate in r_api.json()['rates']:
                 historia_waluty.append(rate['mid'])
             return historia_waluty
+        else:
+            self.error_text = f"Request error code: {self.request_code}"
+            return False
 
 
 if __name__ == "__main__":
