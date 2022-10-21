@@ -44,4 +44,3 @@ while True:
 # koniec programu
 window.close()
 print("End of application")
-sys.exit()

@@ -3,4 +3,4 @@ PySimpleGUI
 snakemd
 pandas
 matplotlib
-speedtest
+speedtest-cli
